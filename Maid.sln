@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Items", "Build Items", "{F30E510A-6DFE-4879-BE96-73B824AE3C95}"
 	ProjectSection(SolutionItems) = preProject
+		.maidchan = .maidchan
 		Directory.Build.props = Directory.Build.props
+		pack.ps1 = pack.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maid", "src\Maid\Maid.csproj", "{C636AEF9-E9E2-4E55-AC1A-06F77AC8BA7D}"
