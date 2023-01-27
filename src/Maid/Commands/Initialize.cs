@@ -61,8 +61,7 @@ namespace Maid.Commands
 
             if (Solution.HasConfiguration)
             {
-                Console.WriteLine("Already has a configuration.");
-                return;
+                App.WriteError("Directory already has a configuration.");
             }
 
             if (CreateConfigOnly)
@@ -78,8 +77,7 @@ namespace Maid.Commands
 
             if (File.Exists($"{Path.Combine(output, name)}.sln"))
             {
-                Console.WriteLine("Already has a sln.");
-                return;
+                App.WriteError("Directory already has a solution with the same name.");
             }
 
             // Create sln

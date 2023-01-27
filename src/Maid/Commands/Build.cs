@@ -71,8 +71,7 @@ namespace Maid.Commands
 
             if (result != 0)
             {
-                // error
-                throw new Exception();
+                App.WriteError("Script has exited with a non-zero exit-code.");
             }
         }
 
