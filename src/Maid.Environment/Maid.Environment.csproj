@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Common\System.Extensions.cs" Link="Common\System\Extensions.cs" />
+    <EmbeddedResource Include="Resources\build.ps1" />
+    <EmbeddedResource Include="Resources\buildInvoker.ps1" />
+    <EmbeddedResource Include="Resources\Directory.Build.props" />
+    <EmbeddedResource Include="Resources\Sdk.props" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Maid.Test" Condition="'$(Configuration)' == 'Debug'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CliWrap" Version="3.6.0">
+      <PrivateAssets>contentfiles;analyzers;build;compile;</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

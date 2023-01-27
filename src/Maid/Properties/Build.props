@@ -1,0 +1,10 @@
+<Project>
+
+  <PropertyGroup>
+
+    <PackageOutputPath>$(ArtifactsDir)NuGet</PackageOutputPath>
+    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB4011</MSBuildWarningsAsMessages>
+
+  </PropertyGroup>
+
+</Project>

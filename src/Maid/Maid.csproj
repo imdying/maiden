@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+
+    <PackageReference Include="Senpai" Version="3.0.0-alpha.2" />
+    <ProjectReference Include="..\Maid.Environment\Maid.Environment.csproj" />
+    <ProjectReference Include="..\Maid.SRLC\Maid.SRLC.csproj" />
+
+  </ItemGroup>
+
+  <Import Project="Properties\Build.props" />
+  <Import Project="Properties\NuGet.props" />
+
+</Project>

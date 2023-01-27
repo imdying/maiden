@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+    <PackageReference Include="Semver" Version="2.3.0-beta.0">
+      <PrivateAssets>contentfiles;analyzers;build;compile;</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Sharprompt" Version="3.0.0-preview2" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Common\System.Extensions.cs" Link="Common\System\Extensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Maid.Test" Condition="'$(Configuration)' == 'Debug'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Maid.Environment\Maid.Environment.csproj" />
+  </ItemGroup>
+
+</Project>
