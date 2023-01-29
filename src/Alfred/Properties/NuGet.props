@@ -3,15 +3,15 @@
   <PropertyGroup>
 
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>Maid</ToolCommandName>
+    <ToolCommandName>alfred</ToolCommandName>
 
-    <PackageId>Maid</PackageId>
+    <PackageId>Alfred</PackageId>
     <Authors>$(Company)</Authors>
     <PackageVersion>$(Version)</PackageVersion>
     <Description>A build tool that assists you in versioning your releases.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/imdying/maid</RepositoryUrl>
+    <RepositoryUrl>https://github.com/imdying/alfred</RepositoryUrl>
     <!--<PackageReleaseNotes></PackageReleaseNotes>-->
     <PackageTags>build;assist;script;tool;</PackageTags>
 

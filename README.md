@@ -1,9 +1,7 @@
-# Maid
+# Alfred
 
  [![NuGet Badge](https://buildstats.info/nuget/Maid?includePreReleases=true)](https://www.nuget.org/packages/Maid)
  
- ---
-
  A build tool that primarily assists you in versioning your releases.
 
  ## Prerequisites

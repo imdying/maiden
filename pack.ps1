@@ -13,7 +13,7 @@ Echo @("Date    $(Get-Date)"
 
 # User variables
 $cwd = $pwd.Path;
-$Project = 'Maid.sln';
+$Project = 'Alfred.sln';
 
 # User code
 dotnet test @("$Project"

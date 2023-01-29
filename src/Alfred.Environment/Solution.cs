@@ -9,8 +9,8 @@ namespace Maid.Environment
     /// </summary>
     public sealed class Solution
     {
-        private const string CONFIG_NAME = ".maidchan";
-        private const string OBJECT_DIR_NAME = ".maid";
+        private const string CONFIG_NAME = ".alfred";
+        private const string OBJECT_DIR_NAME = ".alfredobj";
         private readonly FileInfo _configFile;
         private Configuration? _configuration;
 

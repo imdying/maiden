@@ -12,8 +12,8 @@
   <ItemGroup>
 
     <PackageReference Include="Senpai" Version="3.0.0-preview.1" />
-    <ProjectReference Include="..\Maid.Environment\Maid.Environment.csproj" />
-    <ProjectReference Include="..\Maid.SRLC\Maid.SRLC.csproj" />
+    <ProjectReference Include="..\Alfred.Environment\Alfred.Environment.csproj" />
+    <ProjectReference Include="..\Alfred.SRLC\Alfred.SRLC.csproj" />
 
   </ItemGroup>
 

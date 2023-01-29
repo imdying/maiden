@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="Maid.Test" Condition="'$(Configuration)' == 'Debug'" />
+    <InternalsVisibleTo Include="Alfred.Test" Condition="'$(Configuration)' == 'Debug'" />
   </ItemGroup>
 
   <ItemGroup>

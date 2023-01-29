@@ -3,6 +3,7 @@
 .vscode/
 artifacts/
 .maid
+.alfred_obj/
 
 # Files
 *.csproj.user

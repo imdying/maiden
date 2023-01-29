@@ -12,18 +12,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Items", "Build Items", "{F30E510A-6DFE-4879-BE96-73B824AE3C95}"
 	ProjectSection(SolutionItems) = preProject
-		.maidchan = .maidchan
 		Directory.Build.props = Directory.Build.props
+		.alfred = .alfred
 		pack.ps1 = pack.ps1
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maid", "src\Maid\Maid.csproj", "{C636AEF9-E9E2-4E55-AC1A-06F77AC8BA7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alfred", "src\Alfred\Alfred.csproj", "{C636AEF9-E9E2-4E55-AC1A-06F77AC8BA7D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maid.Test", "src\Maid.Test\Maid.Test.csproj", "{228C548E-3565-47CA-A012-A24852548B6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alfred.Test", "src\Alfred.Test\Alfred.Test.csproj", "{228C548E-3565-47CA-A012-A24852548B6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maid.Environment", "src\Maid.Environment\Maid.Environment.csproj", "{FCABCA0B-7DB7-41BB-B08C-4E52B13C3C76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alfred.Environment", "src\Alfred.Environment\Alfred.Environment.csproj", "{FCABCA0B-7DB7-41BB-B08C-4E52B13C3C76}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maid.SRLC", "src\Maid.SRLC\Maid.SRLC.csproj", "{4403915C-CAC8-475B-A41E-FAFA9DA5E850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alfred.SRLC", "src\Alfred.SRLC\Alfred.SRLC.csproj", "{4403915C-CAC8-475B-A41E-FAFA9DA5E850}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
