@@ -2,7 +2,9 @@
 
  [![NuGet Badge](https://buildstats.info/nuget/Alfred?includePreReleases=true)](https://www.nuget.org/packages/Alfred)
  
- A build tool that primarily assists you in versioning your releases.
+ A build tool designed to streamline the process of versioning software releases. 
+ 
+ This tool provides a comprehensive set of features and functionalities that are specifically aimed at assisting developers in organizing and managing their release versions.
 
  ## Prerequisites
 
