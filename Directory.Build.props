@@ -1,5 +1,5 @@
 <Project>
 
-  <Import Project=".alfredobj\Sdk.props" />
+  <Import Project=".maid\Sdk.props" />
 
 </Project>
