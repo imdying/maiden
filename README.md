@@ -1,6 +1,6 @@
 # Alfred
 
- [![NuGet Badge](https://buildstats.info/nuget/Maid?includePreReleases=true)](https://www.nuget.org/packages/Maid)
+ [![NuGet Badge](https://buildstats.info/nuget/Alfred?includePreReleases=true)](https://www.nuget.org/packages/Alfred)
  
  A build tool that primarily assists you in versioning your releases.
 
