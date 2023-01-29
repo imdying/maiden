@@ -1,5 +1,0 @@
-<Project>
-
-  <Import Project=".alfredobj\Sdk.props" />
-
-</Project>

@@ -1,0 +1,25 @@
+<Project>
+
+  <PropertyGroup>
+
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>maiden</ToolCommandName>
+
+    <PackageId>Maiden</PackageId>
+    <Authors>$(Company)</Authors>
+    <PackageVersion>$(Version)</PackageVersion>
+    <Description>A versioning assistant build tool.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/imdying/maiden</RepositoryUrl>
+    <!--<PackageReleaseNotes></PackageReleaseNotes>-->
+    <PackageTags>versioning;build;assist;script;tool;</PackageTags>
+    <PackageReadmeFile>\README.md</PackageReadmeFile>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+</Project>

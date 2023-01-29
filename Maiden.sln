@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{10789597-905D-41DF-A089-C975AE928C25}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		CHANGELOG.md = CHANGELOG.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Items", "Build Items", "{F30E510A-6DFE-4879-BE96-73B824AE3C95}"
+	ProjectSection(SolutionItems) = preProject
+		.alfred = .alfred
+		Directory.Build.props = Directory.Build.props
+		pack.ps1 = pack.ps1
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maiden", "src\Maiden\Maiden.csproj", "{C636AEF9-E9E2-4E55-AC1A-06F77AC8BA7D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maiden.Test", "src\Maiden.Test\Maiden.Test.csproj", "{228C548E-3565-47CA-A012-A24852548B6B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maiden.Environment", "src\Maiden.Environment\Maiden.Environment.csproj", "{FCABCA0B-7DB7-41BB-B08C-4E52B13C3C76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maiden.SRLC", "src\Maiden.SRLC\Maiden.SRLC.csproj", "{4403915C-CAC8-475B-A41E-FAFA9DA5E850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maiden.Runtime", "src\Maiden.Runtime\Maiden.Runtime.csproj", "{E9FCB2BA-510B-4FF5-8CC5-9C2BDE1ECF8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C636AEF9-E9E2-4E55-AC1A-06F77AC8BA7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C636AEF9-E9E2-4E55-AC1A-06F77AC8BA7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C636AEF9-E9E2-4E55-AC1A-06F77AC8BA7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C636AEF9-E9E2-4E55-AC1A-06F77AC8BA7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{228C548E-3565-47CA-A012-A24852548B6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{228C548E-3565-47CA-A012-A24852548B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{228C548E-3565-47CA-A012-A24852548B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{228C548E-3565-47CA-A012-A24852548B6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCABCA0B-7DB7-41BB-B08C-4E52B13C3C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCABCA0B-7DB7-41BB-B08C-4E52B13C3C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCABCA0B-7DB7-41BB-B08C-4E52B13C3C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCABCA0B-7DB7-41BB-B08C-4E52B13C3C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4403915C-CAC8-475B-A41E-FAFA9DA5E850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4403915C-CAC8-475B-A41E-FAFA9DA5E850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4403915C-CAC8-475B-A41E-FAFA9DA5E850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4403915C-CAC8-475B-A41E-FAFA9DA5E850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9FCB2BA-510B-4FF5-8CC5-9C2BDE1ECF8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9FCB2BA-510B-4FF5-8CC5-9C2BDE1ECF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9FCB2BA-510B-4FF5-8CC5-9C2BDE1ECF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9FCB2BA-510B-4FF5-8CC5-9C2BDE1ECF8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A587BBF-1B64-49BF-8855-62E3069DCEB7}
+	EndGlobalSection
+EndGlobal

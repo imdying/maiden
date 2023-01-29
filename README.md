@@ -1,6 +1,6 @@
-# Alfred
+# Maiden
 
- [![NuGet Badge](https://buildstats.info/nuget/Alfred?includePreReleases=true)](https://www.nuget.org/packages/Alfred)
+ [![NuGet Badge](https://buildstats.info/nuget/Maiden?includePreReleases=true)](https://www.nuget.org/packages/Maiden)
  
  A build tool designed to streamline the process of versioning software releases. 
  

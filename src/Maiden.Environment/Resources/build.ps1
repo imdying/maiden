@@ -13,23 +13,6 @@ Echo @("Date    $(Get-Date)"
 
 # User variables
 $cwd = $pwd.Path;
-$Project = 'Maiden.sln';
 
 # User code
-dotnet test @("$Project"
-              '-s'
-              './.runsettings');
-
-if ($LASTEXITCODE -ne 0) {
-    throw;
-}
-
-dotnet pack @("$Project"
-              "/p:Version=$BuildVersion"
-              '/p:Configuration=Release');
-
-if ($LASTEXITCODE -ne 0) {
-    throw;
-}
-
-# dotnet push
+Write-Host "Hello World";

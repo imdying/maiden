@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\build.ps1" />
+    <EmbeddedResource Include="Resources\buildInvoker.ps1" />
+    <EmbeddedResource Include="Resources\Directory.Build.props" />
+    <EmbeddedResource Include="Resources\Sdk.props" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Maiden.Test" Condition="'$(Configuration)' == 'Debug'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Maiden.Runtime\Maiden.Runtime.csproj" />
+  </ItemGroup>
+
+</Project>

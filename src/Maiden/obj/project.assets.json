@@ -1,0 +1,241 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "Maid/1.0.0-preview.1": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Maid.CLI.dll": {},
+          "lib/net7.0/Maid.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Maid.CLI.dll": {},
+          "lib/net7.0/Maid.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Semver/2.3.0-beta.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Semver.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Sharprompt/3.0.0-preview2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/Sharprompt.dll": {}
+        },
+        "resource": {
+          "lib/net6.0/de-DE/Sharprompt.resources.dll": {
+            "locale": "de-DE"
+          },
+          "lib/net6.0/ja/Sharprompt.resources.dll": {
+            "locale": "ja"
+          }
+        }
+      },
+      "Maiden.Environment/0.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Maiden.Runtime": "0.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Maiden.Environment.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Maiden.Environment.dll": {}
+        }
+      },
+      "Maiden.Runtime/0.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Maiden.Runtime.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Maiden.Runtime.dll": {}
+        }
+      },
+      "Maiden.SRLC/0.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Semver": "2.3.0-beta.0",
+          "Sharprompt": "3.0.0-preview2"
+        },
+        "compile": {
+          "bin/placeholder/Maiden.SRLC.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Maiden.SRLC.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Maid/1.0.0-preview.1": {
+      "sha512": "6bUKVwmcsGe5S77iYH5d6byKmIiIW4PjylYP0NO8UEU/TSHCxeQFTSzXyfs/pyPHD+nR+45Xxf/fM566PYU75g==",
+      "type": "package",
+      "path": "maid/1.0.0-preview.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net7.0/Maid.CLI.dll",
+        "lib/net7.0/Maid.dll",
+        "lib/net7.0/Maid.xml",
+        "lib/netstandard2.0/Maid.CLI.dll",
+        "lib/netstandard2.0/Maid.dll",
+        "lib/netstandard2.0/Maid.xml",
+        "maid.1.0.0-preview.1.nupkg.sha512",
+        "maid.nuspec"
+      ]
+    },
+    "Semver/2.3.0-beta.0": {
+      "sha512": "f8AbexLAMRSdQ+0Ko17WYGPcX/sFcucFaPfv9ElGEep6fz3HrR9InaqD44LPGMna/uLQmUy42tcWVBA20REoeA==",
+      "type": "package",
+      "path": "semver/2.3.0-beta.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/Semver.dll",
+        "lib/net452/Semver.xml",
+        "lib/netstandard1.1/Semver.dll",
+        "lib/netstandard1.1/Semver.xml",
+        "lib/netstandard2.0/Semver.dll",
+        "lib/netstandard2.0/Semver.xml",
+        "semver.2.3.0-beta.0.nupkg.sha512",
+        "semver.nuspec"
+      ]
+    },
+    "Sharprompt/3.0.0-preview2": {
+      "sha512": "Jt/+ofedijE8/2bWZ6GLI2N3qmbzbZc/dpQMOQOfz5DbbOM2A4gBVicvxmuJUo7DRbPu3Uvbldl2LTcyuRO2Qg==",
+      "type": "package",
+      "path": "sharprompt/3.0.0-preview2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net6.0/Sharprompt.dll",
+        "lib/net6.0/de-DE/Sharprompt.resources.dll",
+        "lib/net6.0/ja/Sharprompt.resources.dll",
+        "sharprompt.3.0.0-preview2.nupkg.sha512",
+        "sharprompt.nuspec"
+      ]
+    },
+    "Maiden.Environment/0.0.0": {
+      "type": "project",
+      "path": "../Maiden.Environment/Maiden.Environment.csproj",
+      "msbuildProject": "../Maiden.Environment/Maiden.Environment.csproj"
+    },
+    "Maiden.Runtime/0.0.0": {
+      "type": "project",
+      "path": "../Maiden.Runtime/Maiden.Runtime.csproj",
+      "msbuildProject": "../Maiden.Runtime/Maiden.Runtime.csproj"
+    },
+    "Maiden.SRLC/0.0.0": {
+      "type": "project",
+      "path": "../Maiden.SRLC/Maiden.SRLC.csproj",
+      "msbuildProject": "../Maiden.SRLC/Maiden.SRLC.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "Maid >= 1.0.0-preview.1",
+      "Maiden.Environment >= 0.0.0",
+      "Maiden.SRLC >= 0.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Senpai\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "0.0.0",
+    "restore": {
+      "projectUniqueName": "F:\\Repository\\maiden\\src\\Maiden\\Maiden.csproj",
+      "projectName": "Maiden",
+      "projectPath": "F:\\Repository\\maiden\\src\\Maiden\\Maiden.csproj",
+      "packagesPath": "C:\\Users\\Senpai\\.nuget\\packages\\",
+      "outputPath": "F:\\Repository\\maiden\\src\\Maiden\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Senpai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "F:\\Repository\\maiden\\src\\Maiden.Environment\\Maiden.Environment.csproj": {
+              "projectPath": "F:\\Repository\\maiden\\src\\Maiden.Environment\\Maiden.Environment.csproj"
+            },
+            "F:\\Repository\\maiden\\src\\Maiden.SRLC\\Maiden.SRLC.csproj": {
+              "projectPath": "F:\\Repository\\maiden\\src\\Maiden.SRLC\\Maiden.SRLC.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "dependencies": {
+          "Maid": {
+            "target": "Package",
+            "version": "[1.0.0-preview.1, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200-preview.22628.1\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
