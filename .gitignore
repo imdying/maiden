@@ -2,7 +2,9 @@
 .vs/
 .vscode/
 artifacts/
-.maid
+.raiden/
+obj/
+bin/
 
 # Files
 *.csproj.user

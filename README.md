@@ -1,6 +1,6 @@
-# Maiden
+# Raiden
 
- [![NuGet Badge](https://buildstats.info/nuget/Maiden?includePreReleases=true)](https://www.nuget.org/packages/Maiden)
+ [![NuGet Badge](https://buildstats.info/nuget/Raiden?includePreReleases=true)](https://www.nuget.org/packages/Raiden)
  
  A build tool designed to streamline the process of versioning software releases. 
  
