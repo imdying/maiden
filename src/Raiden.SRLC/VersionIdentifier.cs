@@ -1,11 +1,10 @@
 ﻿namespace Raiden.SRLC;
 
-public enum VersionType
+public enum VersionIdentifier
 {
     Major,
     Minor,
     Patch,
-    Prerelease,
     Build,
     Revision
 }

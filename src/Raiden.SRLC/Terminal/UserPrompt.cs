@@ -1,23 +1,18 @@
 ﻿using Sharprompt;
 
-namespace Raiden.SRLC
+namespace Raiden.SRLC.Terminal
 {
-    internal sealed class UserPrompt
+    public static class UserPrompt
     {
-        public ConsoleColor Theme
-        {
-            get;
-            set;
-        } = ConsoleColor.Gray;
-
-        public T PromptSelector<T>(string question,
+        public static T PromptSelector<T>(string question,
                                   T[] options,
                                   out int optionIndex,
+                                  ConsoleColor? color = null,
                                   int defaultValue = 0,
                                   int? selectValue = null)
         {
             int index = 0;
-            var result = PromptSelector<T>(question, options, defaultValue, selectValue);
+            var result = PromptSelector(question, options, color, defaultValue, selectValue);
             optionIndex = -1;
 
             foreach (var item in options)
@@ -41,8 +36,9 @@ namespace Raiden.SRLC
         }
 
         /// <param name="selectValue">If not null, skip the cInput part and return the value given.</param>
-        public T PromptSelector<T>(string question,
+        public static T PromptSelector<T>(string question,
                                           T[] options,
+                                          ConsoleColor? color = null,
                                           int defaultValue = 0,
                                           int? selectValue = null)
         {
@@ -56,14 +52,18 @@ namespace Raiden.SRLC
 
             Prompt.Symbols.Done = new Symbol("✓", "O");
             Prompt.Symbols.Error = new Symbol("X", "X");
-            Prompt.ColorSchema.Answer = Theme;
-            Prompt.ColorSchema.Select = Theme;
+
+            if (color != null)
+            {
+                Prompt.ColorSchema.Answer = color.Value;
+                Prompt.ColorSchema.Select = color.Value;
+            }
 
             if (selectValue != null)
             {
                 var result = options.ElementAt((int)selectValue);
-                Console.WriteLine($"{question}: {result}");
-                return (T)result;
+                Shell.WriteLine($"{question}: {result}", color);
+                return result;
             }
             else
             {
