@@ -5,7 +5,8 @@ namespace Raiden.Commands
 {
     public sealed class Build : Command
     {
-        public string? Source
+        // [Argument(1, "Source", "The source directory.")]
+        public string? SourceDir
         {
             get;
             set;
@@ -23,12 +24,6 @@ namespace Raiden.Commands
             set;
         }
 
-        public Controller? VersionControl
-        {
-            get;
-            set;
-        }
-
         protected override CommandProperty Properties => new()
         {
             Description = "Build a solution."
@@ -36,11 +31,20 @@ namespace Raiden.Commands
 
         protected override void Invocation(object?[] args)
         {
-            Source ??= Directory.GetCurrentDirectory();
-            Solution = new Solution(Source);
-            Configuration = Solution.Configuration;
-            VersionControl = new Controller(Configuration.Version);
-            var scriptLoader = new ScriptLoader(Configuration.Script);
+            Release release;
+            SourceDir ??= Directory.GetCurrentDirectory();
+
+            try
+            {
+                Solution = new Solution(SourceDir);
+                Configuration = Solution.Configuration;
+            }
+            catch (FileNotFoundException)
+            {
+                Cli.WriteError("Configuration file doesn't exist.");
+            }
+
+            var scriptLoader = new ScriptLoader(Configuration!.Script);
 
             // Whether to save before or after successfully running the build-script.
             if (Configuration.UpdateBeforeScript)
@@ -51,13 +55,16 @@ namespace Raiden.Commands
             // restoring
             if (Configuration.Restore)
             {
-                Solution.Restore();
+                Solution!.Restore();
             }
 
             // Versioning
-            VersionControl.Invoke(Resources.Theme);
-            Configuration.Build.Update(Configuration.Build.Number+ 1, 
-                                       VersionControl.Version.ToString());
+            release = new Release(Configuration.Version);
+            release.Invoke(Resources.Theme);
+
+            // Updating version in cfg
+            Configuration.Build.Update(Configuration.Build.Number + 1,
+                                       release.ToString());
 
             // Script invocation
             scriptLoader.Symbols = new()
@@ -65,11 +72,10 @@ namespace Raiden.Commands
                 { "{{bNum}}", Configuration.Build.Number.ToString() },
                 { "{{bVer}}", Configuration.Build.Version },
                 { "{{bScript}}", Path.GetFullPath(Configuration.Script ?? string.Empty) },
-                { "{{bVerId}}", VersionControl.Software.Stage.Abbreviation }
+                { "{{bVerId}}", release.Version.Stage.Name }
             };
-            var result = scriptLoader.Execute();
 
-            if (result != 0)
+            if (scriptLoader.Execute() != 0)
             {
                 Cli.WriteError("Script has exited with a non-zero exit-code.");
             }
