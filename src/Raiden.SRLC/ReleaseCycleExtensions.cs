@@ -4,17 +4,17 @@ internal static class ReleaseCycleExtensions
 {
     public static ReleaseCycle GetCycle(string identifier)
     {
-        ArgumentException.ThrowIfNullOrEmpty(identifier, nameof(identifier));
-
-        foreach (var cycle in Enum.GetValues(typeof(ReleaseCycle)).Cast<ReleaseCycle>())
+        if (string.IsNullOrEmpty(identifier))
         {
-            if (identifier.Equals(Enum.GetName(typeof(ReleaseCycle), cycle)?.ToLower()))
-            {
-                return cycle;
-            }
+            throw new ArgumentException("Identifier cannot be null or empty.", nameof(identifier));
         }
 
-        throw new KeyNotFoundException($"Release cycle '{identifier}' is not supported.");
+        if (!Enum.TryParse(identifier, true, out ReleaseCycle cycle))
+        {
+            throw new KeyNotFoundException($"Release cycle '{identifier}' is not supported.");
+        }
+
+        return cycle;
     }
 
     /// <summary>
