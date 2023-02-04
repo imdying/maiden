@@ -12,7 +12,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/imdying/raiden</RepositoryUrl>
-    <!--<PackageReleaseNotes></PackageReleaseNotes>-->
+    <PackageReleaseNotes>https://github.com/imdying/raiden/blob/main/CHANGELOG.md</PackageReleaseNotes>
     <PackageTags>versioning;build;assist;script;tool;</PackageTags>
     <PackageReadmeFile>\README.md</PackageReadmeFile>
 
