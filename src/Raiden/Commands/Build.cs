@@ -1,89 +1,165 @@
-﻿using Raiden.Environment;
+﻿using Raiden.Data;
+using Raiden.Runtime;
+using Raiden.Runtime.Invocation;
 using Raiden.SRLC;
 
-namespace Raiden.Commands
+namespace Raiden.Commands;
+
+public sealed class Build : Command
 {
-    public sealed class Build : Command
+    [Option(
+        "--source",
+        "A relative or absolute pathname of the root directory of your project.",
+        Alias = "-s"
+    )]
+    public string Source { get; set; } = Directory.GetCurrentDirectory();
+
+    private Configuration? Cfg
     {
-        // [Argument(1, "Source", "The source directory.")]
-        public string? SourceDir
+        get;
+        set;
+    }
+
+    private Release? Rl
+    {
+        get;
+        set;
+    }
+
+    private Solution? Sln
+    {
+        get;
+        set;
+    }
+
+    protected override CommandProperty Properties => new()
+    {
+        Description = "The powerhouse behind the tool, handling all versioning tasks."
+    };
+
+    protected override void Invocation(object?[] args)
+    {
+        Validate.ShouldNotBeNullOrEmpty(Source, nameof(Source));
+        Validate.PathShouldExist(Source);
+
+        Sln = new Solution(Source);
+        Cfg = Sln.GetConfiguration();
+
+        Validate.PathShouldExist(
+            Cfg.Script
+        );
+
+        // Versioning
+        Rl = new Release(Cfg.Version);
+        Rl.Invoke(Application.Theme);
+
+        LoadScript(Sln, Cfg, Rl);
+    }
+
+    private static string GetRandomTmpFileName()
+    {
+        var path = Path.GetTempPath();
+        var name = Path.GetRandomFileName();
+        return Path.Combine(path, name);
+    }
+
+    private static string Replace(string content, Dictionary<string, string> symbols)
+    {
+        if (content.Length <= 0)
+            throw new InvalidOperationException();
+
+        foreach (var (Key, Value) in symbols)
         {
-            get;
-            set;
+            content = content.Replace(Key, Value);
         }
 
-        private Solution? Solution
-        {
-            get;
-            set;
-        }
+        return content;
+    }
 
-        private Configuration? Configuration
-        {
-            get;
-            set;
-        }
+    private void LoadScript(Solution sln, Configuration cfg, Release rl)
+    {
+        Benchmark.Start();
+        // Directory.SetCurrentDirectory(Source);
 
-        protected override CommandProperty Properties => new()
+        Script scriptCaller;
+        Dictionary<string, string> symbols;
+
+        // read resource from appdir
+        var buildTemplate = Path.Combine(
+            Application.GetPath(ApplicationDirectory.Scripts), 
+            "buildInvoker.ps1"
+        );
+
+        var buildTemplateContent = File.ReadAllText(
+            buildTemplate
+        );
+
+        symbols = new()
         {
-            Description = "Build a solution."
+            { "{{bScript}}", Path.GetFullPath(cfg.Script ?? string.Empty, sln.Source.FullName) },
+            { "{{bNum}}", cfg.Build.Number.ToString() },
+            { "{{bVer}}", cfg.Build.Version },
+            { "{{bVerId}}", rl.Version.Stage.Name }
         };
 
-        protected override void Invocation(object?[] args)
+        buildTemplateContent = Replace(
+            buildTemplateContent,
+            symbols
+        );
+
+        scriptCaller = new Script(
+            string.Format("{0}.ps1", GetRandomTmpFileName())
+        );
+
+        // Saving modified script for later invocation.
+        File.WriteAllText(
+            scriptCaller.FileName, 
+            buildTemplateContent
+        );
+
+        // Whether to save before or after successfully running the build-script.
+        if (cfg.UpdateBeforeScript)
+            scriptCaller.BeforeInvocation += OnUpdate;
+        else
+            scriptCaller.AfterInvocation += OnUpdate;
+
+        #region Displaying Build Info
+        Console.WriteLine();
+        #endregion
+
+        if (scriptCaller.Invoke() != 0)
         {
-            Release release;
-            SourceDir ??= Directory.GetCurrentDirectory();
-
-            try
-            {
-                Solution = new Solution(SourceDir);
-                Configuration = Solution.Configuration;
-            }
-            catch (FileNotFoundException)
-            {
-                Cli.WriteError("Configuration file doesn't exist.");
-            }
-
-            var scriptLoader = new ScriptLoader(Configuration!.Script);
-
-            // Whether to save before or after successfully running the build-script.
-            if (Configuration.UpdateBeforeScript)
-                scriptLoader.BeforeShellInvocation += OnUpdating;
-            else
-                scriptLoader.AfterShellInvocation += OnUpdating;
-
-            // restoring
-            if (Configuration.Restore)
-            {
-                Solution!.Restore();
-            }
-
-            // Versioning
-            release = new Release(Configuration.Version);
-            release.Invoke(Resources.Theme);
-
-            // Updating version in cfg
-            Configuration.Build.Update(Configuration.Build.Number + 1,
-                                       release.ToString());
-
-            // Script invocation
-            scriptLoader.Symbols = new()
-            {
-                { "{{bNum}}", Configuration.Build.Number.ToString() },
-                { "{{bVer}}", Configuration.Build.Version },
-                { "{{bScript}}", Path.GetFullPath(Configuration.Script ?? string.Empty) },
-                { "{{bVerId}}", release.Version.Stage.Name }
-            };
-
-            if (scriptLoader.Execute() != 0)
-            {
-                Cli.WriteError("Script has exited with a non-zero exit-code.");
-            }
+            Cli.WriteError(
+                "Script has returned a non-zero exit code."
+            );
         }
 
-        private void OnUpdating(object? sender, EventArgs e)
+        #region Disposal
+        try
         {
-            Configuration?.Save();
+            File.Delete(
+                scriptCaller.FileName
+            );
         }
+        catch (Exception)
+        {
+
+            Cli.WriteWarning(
+                $"Failed to dispose of the temporary file at '{scriptCaller.FileName}'."
+            );
+        } 
+        #endregion
+    }
+
+    private void OnUpdate(object? sender, EventArgs e)
+    {
+        if (Sln is null || Rl is null || Cfg is null)
+        {
+            throw new InvalidOperationException();
+        }
+
+        Cfg.Build.Update(Rl.Version.ToString());
+        Cfg.Save();
+        Rollback.Save(Sln, Cfg.Build);
     }
 }

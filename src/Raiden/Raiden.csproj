@@ -1,20 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
   </PropertyGroup>
 
   <ItemGroup>
-
     <PackageReference Include="Maid" Version="1.0.0-preview.1" />
-    <ProjectReference Include="..\Raiden.Environment\Raiden.Environment.csproj" />
+    <ProjectReference Include="..\Raiden.Runtime\Raiden.Runtime.csproj" />
     <ProjectReference Include="..\Raiden.SRLC\Raiden.SRLC.csproj" />
-
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2">
+      <PrivateAssets>contentfiles;analyzers;build;compile;</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3-beta1">
+      <PrivateAssets>contentfiles;analyzers;build;compile;</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <Import Project="Properties\Build.props" />

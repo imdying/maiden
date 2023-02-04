@@ -1,95 +1,67 @@
-﻿using Raiden.Environment;
+﻿using Raiden.Data;
 
 namespace Raiden.Commands
 {
     public sealed class Initialize : Command
     {
-        [Option(
-            "--config-only",
-            "Create only the configuration file.",
-            Alias = "-c"
-        )]
-        public bool CreateConfigOnly
-        {
-            get;
-            set;
-        }
-
-        [Option(
-            "--name",
-            "The name for the output being created. " +
-            "If no name is specified, the name of the output directory is used.",
-            Alias = "-n")]
-        public string? Name
-        {
-            get;
-            set;
-        }
+        private const string SCRIPT_NAME = "build.ps1";
 
         [Option(
             "--output",
             "Location to place the generated output.",
-            Alias = "-o")]
-        public string? Output
-        {
-            get;
-            set;
-        }
-
-        public Solution? Solution
-        {
-            get;
-            set;
-        }
+            Alias = "-o"
+        )]
+        public string Output { get; set; } = Directory.GetCurrentDirectory();
 
         protected override CommandProperty Properties => new()
         {
             Name = "init",
-            Synopsis = "Create a solution.",
-            Description =
-            "Create a solution.\n\n" +
-            "In the context of Raiden, a solution is more than just a 'Visual Studio Solution'.\n" +
-            "It essentially creates a customized sln, alongside Raiden's prerequisites.\n\n" +
-            "This behavior can be altered by appending a specific flag."
+            Description = "Generate the necessary configuration files for your project."
         };
 
         protected override void Invocation(object?[] args)
         {
-            Output ??= Directory.GetCurrentDirectory();
-            Name ??= Path.GetFileName(Output) ?? "Undefined";
-            Solution = new Solution(Output);
+            if (string.IsNullOrWhiteSpace(Output))
+            {
+                Cli.WriteError("Output cannot be null or empty.");
+            }
 
-            if (Solution.HasConfiguration)
+            var sln = new Solution(Output);
+            var script = Path.Combine(sln.Source.FullName, SCRIPT_NAME);
+            var scriptTemplate = Path.Combine(Application.GetPath(ApplicationDirectory.Scripts), SCRIPT_NAME);
+
+            #region Creating configuration
+            if (sln.HasConfiguration)
             {
                 Cli.WriteError("Directory already has a configuration.");
             }
-
-            if (CreateConfigOnly)
-                InitPrerequisites(Solution);
             else
-                Init(Solution, Name, Output);
-
-            Console.WriteLine("Raiden was successfully initialized.");
-        }
-
-        private void Init(Solution sln, string name, string output)
-        {
-
-            if (File.Exists($"{Path.Combine(output, name)}.sln"))
             {
-                Cli.WriteError("Directory already has a solution with the same name.");
+                Configuration.Create(
+                    sln.Config.FullName,
+                    Path.GetRelativePath(sln.Source.FullName, script)
+                );
             }
+            #endregion
 
-            // Create sln
-            sln?.CreateSolution(name, output);
+            #region Creating build script
+            if (File.Exists(script))
+            {
+                Cli.WriteWarning("Directory already has a build script, skipping generation.");
+            }
+            else
+            {
+                Solution.CopyContent(
+                    scriptTemplate,
+                    script,
+                    true
+                );
+            } 
+            #endregion
 
-            // Create config and etc
-            sln?.CreatePrerequisites();
-        }
-
-        private void InitPrerequisites(Solution sln)
-        {
-            sln.CreatePrerequisites();
+            Console.WriteLine(
+                "Project successfully initialized."
+            );
         }
     }
 }

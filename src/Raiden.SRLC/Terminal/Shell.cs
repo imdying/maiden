@@ -12,5 +12,16 @@
             Console.WriteLine(value);
             Console.ResetColor();
         }
+
+        public static void Write(string? value, ConsoleColor? color)
+        {
+            if (color != null)
+            {
+                Console.ForegroundColor = color.Value;
+            }
+
+            Console.Write(value);
+            Console.ResetColor();
+        }
     }
 }

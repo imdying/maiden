@@ -80,7 +80,7 @@ public sealed class Release
             }
         }
 
-        Shell.WriteLine($"\nUpgrading from '{Preversion}' to '{Version}'", theme);
+        Shell.WriteLine($"Upgraded from '{Preversion}' to '{Version}'.", theme);
     }
 
     public override string ToString() => Version.ToString();

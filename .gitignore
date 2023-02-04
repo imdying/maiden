@@ -1,7 +1,7 @@
 # Directories
 .vs/
 .vscode/
-artifacts/
+/artifacts/
 .raiden/
 obj/
 bin/

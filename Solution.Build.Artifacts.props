@@ -2,8 +2,8 @@
 
   <PropertyGroup>
 
-    <ArtifactsDir>$(SolutionDir)artifacts\</ArtifactsDir>
-    <ArtifactPath>$(ArtifactsDir)builds\$(MSBuildProjectName)\</ArtifactPath>
+    <BaseArtifactPath>$(SolutionDir)artifacts\</BaseArtifactPath>
+    <ArtifactPath>$(BaseArtifactPath)Build\$(MSBuildProjectName)\</ArtifactPath>
     <BaseOutputPath>$(ArtifactPath)bin</BaseOutputPath>
     <BaseIntermediateOutputPath>$(ArtifactPath)obj</BaseIntermediateOutputPath>
 

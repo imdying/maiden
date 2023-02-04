@@ -1,9 +1,7 @@
 <Project>
 
   <PropertyGroup>
-
-    <PackageOutputPath>$(ArtifactsDir)NuGet</PackageOutputPath>
-
+    <PackageOutputPath>$(BaseArtifactPath)NuGet</PackageOutputPath>
   </PropertyGroup>
 
 </Project>

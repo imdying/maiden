@@ -4,8 +4,12 @@ namespace Raiden.SRLC.Terminal
 {
     public static class UserPrompt
     {
+        public static Symbol Done => new("✓", "O");
+
+        public static Symbol Error => new("X", "X");
+
         public static T PromptSelector<T>(string question,
-                                  T[] options,
+                                  IEnumerable<T> options,
                                   out int optionIndex,
                                   ConsoleColor? color = null,
                                   int defaultValue = 0,
@@ -37,21 +41,23 @@ namespace Raiden.SRLC.Terminal
 
         /// <param name="selectValue">If not null, skip the cInput part and return the value given.</param>
         public static T PromptSelector<T>(string question,
-                                          T[] options,
+                                          IEnumerable<T> options,
                                           ConsoleColor? color = null,
                                           int defaultValue = 0,
                                           int? selectValue = null)
         {
+            var optionCount = options.Count();
+
             defaultValue = Normalize(defaultValue);
 
-            if (selectValue != null && (selectValue > options.Length || selectValue < 0))
+            if (selectValue != null && (selectValue > optionCount || selectValue < 0))
                 throw new InvalidOperationException();
 
-            if (defaultValue > options.Length || defaultValue < 0)
+            if (defaultValue > optionCount || defaultValue < 0)
                 throw new InvalidOperationException();
 
-            Prompt.Symbols.Done = new Symbol("✓", "O");
-            Prompt.Symbols.Error = new Symbol("X", "X");
+            Prompt.Symbols.Done = Done;
+            Prompt.Symbols.Error = Error;
 
             if (color != null)
             {

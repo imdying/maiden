@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Raiden.Environment\Raiden.Environment.csproj" />
+    <ProjectReference Include="..\Raiden.Runtime\Raiden.Runtime.csproj" />
     <ProjectReference Include="..\Raiden.SRLC\Raiden.SRLC.csproj" />
   </ItemGroup>
 
