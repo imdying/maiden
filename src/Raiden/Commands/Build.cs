@@ -50,8 +50,11 @@ public sealed class Build : Command
             nameof(Cfg.Script)
         );
 
+        // If the source has been altered, change cwd.
+        Directory.SetCurrentDirectory(Sln.Source.FullName);
+
         Validate.PathShouldExist(
-            Path.GetFullPath(Cfg.Script!, Sln.Source.FullName)
+            Cfg.Script = Path.GetFullPath(Cfg.Script!)
         );
 
         // Versioning
@@ -84,14 +87,13 @@ public sealed class Build : Command
     private void LoadScript(Solution sln, Configuration cfg, Release rl)
     {
         Benchmark.Start();
-        // Directory.SetCurrentDirectory(Source);
 
         Script scriptCaller;
         Dictionary<string, string> symbols;
 
-        // read resource from appdir
+        #region Build Template
         var buildTemplate = Path.Combine(
-            Application.GetPath(ApplicationDirectory.Scripts), 
+            Application.GetPath(ApplicationDirectory.Scripts),
             "buildInvoker.ps1"
         );
 
@@ -101,9 +103,9 @@ public sealed class Build : Command
 
         symbols = new()
         {
-            { "{{bScript}}", Path.GetFullPath(cfg.Script ?? string.Empty, sln.Source.FullName) },
-            { "{{bNum}}", cfg.Build.Number.ToString() },
-            { "{{bVer}}", cfg.Build.Version },
+            { "{{bScript}}", cfg.Script! },
+            { "{{bNum}}", (cfg.Build.Number + 1).ToString() },
+            { "{{bVer}}", rl.Version.ToString() },
             { "{{bVerId}}", rl.Version.Stage.Name }
         };
 
@@ -111,6 +113,7 @@ public sealed class Build : Command
             buildTemplateContent,
             symbols
         );
+        #endregion
 
         scriptCaller = new Script(
             string.Format("{0}.ps1", GetRandomTmpFileName())

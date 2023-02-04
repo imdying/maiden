@@ -66,6 +66,8 @@ public sealed class Rollback : Command
         var sln = new Solution(Source);
         var dat = new Lazy<IReadOnlyList<ConfigurationMetadata>>(Fetch(sln));
 
+        Directory.SetCurrentDirectory(sln.Source.FullName);
+
         #region Checks
         if (!sln.HasConfiguration)
         {
