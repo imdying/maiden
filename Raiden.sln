@@ -14,9 +14,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Items", "Build Items", "{F30E510A-6DFE-4879-BE96-73B824AE3C95}"
 	ProjectSection(SolutionItems) = preProject
 		.raidenconfig = .raidenconfig
+		Directory.Artifacts.props = Directory.Artifacts.props
 		Directory.Build.props = Directory.Build.props
 		pack.ps1 = pack.ps1
-		Solution.Build.Artifacts.props = Solution.Build.Artifacts.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raiden", "src\Raiden\Raiden.csproj", "{018AD8B8-18CF-40D7-AA87-AE89820E2415}"
