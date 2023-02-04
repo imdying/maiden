@@ -6,7 +6,7 @@
  
  This tool provides a comprehensive set of features and functionalities that are specifically aimed at assisting developers in organizing and managing their release versions.
 
-  ![Raiden Preview](/previews/Raiden.gif)
+  ![Raiden Preview](https://raw.githubusercontent.com/imdying/raiden/main/previews/Raiden.gif)
 
  ## Prerequisites
 
