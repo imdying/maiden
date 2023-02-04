@@ -6,6 +6,8 @@
  
  This tool provides a comprehensive set of features and functionalities that are specifically aimed at assisting developers in organizing and managing their release versions.
 
+  ![Raiden Preview](/previews/Raiden.gif)
+
  ## Prerequisites
 
   - [.NET 7+ SDK](https://dotnet.microsoft.com/en-us/download/dotnet)
