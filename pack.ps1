@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop";
 # Reserved variables
 $BuildNumber    ??= 0;
 $BuildVersion   ??= '0.0.0';
-$BuildVersionId ??= 'gold';
+$BuildVersionId ??= 'Gold';
 
 # Build info.
 Echo @("Date    $(Get-Date)"
