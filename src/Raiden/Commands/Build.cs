@@ -45,8 +45,13 @@ public sealed class Build : Command
         Sln = new Solution(Source);
         Cfg = Sln.GetConfiguration();
 
+        Validate.ShouldNotBeNullOrEmpty(
+            Cfg.Script,
+            nameof(Cfg.Script)
+        );
+
         Validate.PathShouldExist(
-            Cfg.Script
+            Path.GetFullPath(Cfg.Script!, Sln.Source.FullName)
         );
 
         // Versioning
@@ -158,8 +163,8 @@ public sealed class Build : Command
             throw new InvalidOperationException();
         }
 
+        Rollback.Save(Sln, Cfg.Build);
         Cfg.Build.Update(Rl.Version.ToString());
         Cfg.Save();
-        Rollback.Save(Sln, Cfg.Build);
     }
 }
