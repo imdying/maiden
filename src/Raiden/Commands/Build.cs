@@ -54,7 +54,7 @@ public sealed class Build : Command
         Directory.SetCurrentDirectory(Sln.Source.FullName);
 
         Validate.PathShouldExist(
-            Cfg.Script = Path.GetFullPath(Cfg.Script!)
+             Path.GetFullPath(Cfg.Script!)
         );
 
         // Versioning
@@ -103,7 +103,7 @@ public sealed class Build : Command
 
         symbols = new()
         {
-            { "{{bScript}}", cfg.Script! },
+            { "{{bScript}}", Path.GetFullPath(cfg.Script!) },
             { "{{bNum}}", (cfg.Build.Number + 1).ToString() },
             { "{{bVer}}", rl.Version.ToString() },
             { "{{bVerId}}", rl.Version.Stage.Name }
