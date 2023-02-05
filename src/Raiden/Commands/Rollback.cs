@@ -16,7 +16,7 @@ public sealed class Rollback : Command
     )]
     public string Source { get; set; } = Directory.GetCurrentDirectory();
 
-    // Todo: Add comment
+    // TODO: Add comment
     public static IReadOnlyList<ConfigurationMetadata> Fetch(Solution sln)
     {
         IReadOnlyList<ConfigurationMetadata>? result = null;
@@ -32,7 +32,7 @@ public sealed class Rollback : Command
         return result ?? Array.Empty<ConfigurationMetadata>();
     }
 
-    // Todo: Add comment
+    // TODO: Add comment
     public static void Save(Solution sln, ConfigurationMetadata obj)
     {
         var file = GetDataFile(sln);
