@@ -8,12 +8,14 @@
     <PackageId>Raiden</PackageId>
     <Authors>$(Company)</Authors>
     <PackageVersion>$(Version)</PackageVersion>
-    <Description>A versioning assistant build tool.</Description>
+    <Description>A tool for managing software versions.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/imdying/raiden</RepositoryUrl>
     <PackageReleaseNotes>https://github.com/imdying/raiden/blob/main/CHANGELOG.md</PackageReleaseNotes>
-    <PackageTags>versioning;build;assist;script;tool;</PackageTags>
+    <PackageTags>
+      version-control;versioning;build;assist;script;build-tool;release-management;release-automation;development-tool;version-numbering;package-management;
+    </PackageTags>
     <PackageReadmeFile>\README.md</PackageReadmeFile>
 
   </PropertyGroup>
